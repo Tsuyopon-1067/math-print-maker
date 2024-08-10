@@ -76,8 +76,10 @@ func platesSource(problemAnswerList []types.ProblemAnswer, column int) string {
 		"\\usepackage{multicol}\n" +
 		"\\usepackage{enumerate}\n" +
 		"\\begin{document}\n" +
+		"\\section*{問題}\n" +
 		problem + "\n" +
 		"\\newpage\n" +
+		"\\section*{解答}\n" +
 		ans + "\n" +
 		"\\end{document}\n"
 }

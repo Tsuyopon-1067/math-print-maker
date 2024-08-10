@@ -9,9 +9,9 @@ import (
 
 func TestGeneratePlatesSource(t *testing.T) {
 	problemAnsList := []types.ProblemAnswer{
-		types.ProblemAnswer{"p1", "a1"},
-		types.ProblemAnswer{"p2", "a2"},
-		types.ProblemAnswer{"p3", "a3"},
+		{Problem: "p1", Answer: "a1"},
+		{Problem: "p2", Answer: "a2"},
+		{Problem: "p3", Answer: "a3"},
 	}
 	column := 3
 	actual := platesSource(problemAnsList, column)
@@ -19,6 +19,7 @@ func TestGeneratePlatesSource(t *testing.T) {
 \usepackage{multicol}
 \usepackage{enumerate}
 \begin{document}
+\section*{問題}
 \begin{multicols}{3}
 \begin{enumerate}[(1)]
 \item $p1$
@@ -28,6 +29,7 @@ func TestGeneratePlatesSource(t *testing.T) {
 \end{multicols}
 
 \newpage
+\section*{解答}
 \begin{multicols}{3}
 \begin{enumerate}[(1)]
 \item $a1$
