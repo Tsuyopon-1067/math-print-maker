@@ -19,15 +19,10 @@ var quadraticCmd = &cobra.Command{
 	Long: `Generate quadratic equation problems and answers in pdf format.
 	You can specify the number of problems to generate by passing the size flag and columns of generated pdf file.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		problems := generateProblemList(size)
+		problems := generateQuadraticProblemList(size)
 		tex.GeneratePdf(problems, column)
 	},
 }
-
-var (
-	size   int
-	column int
-)
 
 func init() {
 	rootCmd.AddCommand(quadraticCmd)
@@ -46,23 +41,23 @@ func init() {
 	// quadraticCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }
 
-func generateProblemList(size int) []types.ProblemAnswer {
+func generateQuadraticProblemList(size int) []types.ProblemAnswer {
 	problems := make([]types.ProblemAnswer, size)
 	for i := 0; i < size; i++ {
-		problems[i] = generateProblem()
+		problems[i] = generateQuadraticProblem()
 	}
 	return problems
 }
 
-func generateProblem() types.ProblemAnswer {
+func generateQuadraticProblem() types.ProblemAnswer {
 	alpha := randRange(-9, 10)
 	beta := randRange(-9, 10)
 	gamma := randRange(1, 3)
 
-	return generateProblemAnswer(alpha, beta, gamma)
+	return generateQuadraticProblemAnswer(alpha, beta, gamma)
 }
 
-func generateProblemAnswer(alpha int, beta int, gamma int) types.ProblemAnswer {
+func generateQuadraticProblemAnswer(alpha int, beta int, gamma int) types.ProblemAnswer {
 	coefficientA := gamma
 	coefficientB := -gamma * (alpha + beta)
 	coefficientC := alpha * beta * gamma

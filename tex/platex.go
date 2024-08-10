@@ -75,6 +75,7 @@ func platesSource(problemAnswerList []types.ProblemAnswer, column int) string {
 	return "\\documentclass[11pt,a4paper,dvipdfmx]{jsarticle}\n" +
 		"\\usepackage{multicol}\n" +
 		"\\usepackage{enumerate}\n" +
+		"\\usepackage{amsmath}\n" +
 		"\\begin{document}\n" +
 		"\\section*{問題}\n" +
 		problem + "\n" +

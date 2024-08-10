@@ -30,7 +30,7 @@ func TestGenerateProblemList(t *testing.T) {
 	actual := make([]types.ProblemAnswer, len(expected))
 	for i := range coefficient {
 		alpha, beta, gamma := coefficient[i].alpha, coefficient[i].beta, coefficient[i].gamma
-		actual[i] = generateProblemAnswer(alpha, beta, gamma)
+		actual[i] = generateQuadraticProblemAnswer(alpha, beta, gamma)
 	}
 	assert.Equal(t, expected, actual)
 }
