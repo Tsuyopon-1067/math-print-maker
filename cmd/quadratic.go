@@ -55,19 +55,23 @@ func generateProblemList(size int) []types.ProblemAnswer {
 }
 
 func generateProblem() types.ProblemAnswer {
-	alpaha := randRange(-9, 10)
+	alpha := randRange(-9, 10)
 	beta := randRange(-9, 10)
 	gamma := randRange(1, 3)
 
+	return generateProblemAnswer(alpha, beta, gamma)
+}
+
+func generateProblemAnswer(alpha int, beta int, gamma int) types.ProblemAnswer {
 	coefficientA := gamma
-	coefficientB := -gamma * (alpaha + beta)
-	coefficientC := alpaha * beta * gamma
+	coefficientB := -gamma * (alpha + beta)
+	coefficientC := alpha * beta * gamma
 
 	problem := format.CharacterExpression(coefficientA, "x^2", true) +
 		format.CharacterExpression(coefficientB, "x", false) +
 		format.CharacterExpression(coefficientC, "", false) +
 		"=0"
-	answer := format.AnswerExpression("x", alpaha, beta)
+	answer := format.AnswerExpression("x", alpha, beta)
 	return types.ProblemAnswer{Problem: problem, Answer: answer}
 }
 
