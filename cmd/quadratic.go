@@ -15,23 +15,25 @@ import (
 // quadraticCmd represents the quadratic command
 var quadraticCmd = &cobra.Command{
 	Use:   "quadratic",
-	Short: "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
-
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+	Short: "Generate quadratic equation problems and answers in pdf format",
+	Long: `Generate quadratic equation problems and answers in pdf format.
+	You can specify the number of problems to generate by passing the size flag and columns of generated pdf file.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		size := 10
-		column := 3
 		problems := generateProblemList(size)
 		tex.GeneratePdf(problems, column)
 	},
 }
 
+var (
+	size   int
+	column int
+)
+
 func init() {
 	rootCmd.AddCommand(quadraticCmd)
+
+	quadraticCmd.Flags().IntVarP(&size, "size", "s", 100, "Size flag")
+	quadraticCmd.Flags().IntVarP(&column, "column", "c", 3, "Column flag")
 
 	// Here you will define your flags and configuration settings.
 
