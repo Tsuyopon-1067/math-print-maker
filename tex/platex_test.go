@@ -18,6 +18,7 @@ func TestGeneratePlatesSource(t *testing.T) {
 	expected := `\documentclass[11pt,a4paper,dvipdfmx]{jsarticle}
 \usepackage{multicol}
 \usepackage{enumerate}
+\usepackage{amsmath}
 \begin{document}
 \section*{問題}
 \begin{multicols}{3}
