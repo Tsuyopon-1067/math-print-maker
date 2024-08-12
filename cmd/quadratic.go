@@ -4,10 +4,7 @@ Copyright © 2024 NAME HERE <EMAIL ADDRESS>
 package cmd
 
 import (
-	"math/rand"
-	"printmaker/format"
-	"printmaker/tex"
-	"printmaker/types"
+	"printmaker/cmdhelper"
 
 	"github.com/spf13/cobra"
 )
@@ -19,8 +16,7 @@ var quadraticCmd = &cobra.Command{
 	Long: `Generate quadratic equation problems and answers in pdf format.
 	You can specify the number of problems to generate by passing the size flag and columns of generated pdf file.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		problems := generateQuadraticProblemList(size)
-		tex.GeneratePdf(problems, column)
+		cmdhelper.CmdQuadratic(size, column)
 	},
 }
 
@@ -39,37 +35,4 @@ func init() {
 	// Cobra supports local flags which will only run when this command
 	// is called directly, e.g.:
 	// quadraticCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
-}
-
-func generateQuadraticProblemList(size int) []types.ProblemAnswer {
-	problems := make([]types.ProblemAnswer, size)
-	for i := 0; i < size; i++ {
-		problems[i] = generateQuadraticProblem()
-	}
-	return problems
-}
-
-func generateQuadraticProblem() types.ProblemAnswer {
-	alpha := randRange(-9, 10)
-	beta := randRange(-9, 10)
-	gamma := randRange(1, 3)
-
-	return generateQuadraticProblemAnswer(alpha, beta, gamma)
-}
-
-func generateQuadraticProblemAnswer(alpha int, beta int, gamma int) types.ProblemAnswer {
-	coefficientA := gamma
-	coefficientB := -gamma * (alpha + beta)
-	coefficientC := alpha * beta * gamma
-
-	problem := format.CharacterExpression(coefficientA, "x^2", true) +
-		format.CharacterExpression(coefficientB, "x", false) +
-		format.CharacterExpression(coefficientC, "", false) +
-		"=0"
-	answer := format.AnswerExpression("x", alpha, beta)
-	return types.ProblemAnswer{Problem: problem, Answer: answer}
-}
-
-func randRange(min int, max int) int {
-	return rand.Intn(max-min) + min
 }
