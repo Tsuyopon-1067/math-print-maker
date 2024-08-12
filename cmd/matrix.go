@@ -4,8 +4,7 @@ Copyright © 2024 NAME HERE <EMAIL ADDRESS>
 package cmd
 
 import (
-	"printmaker/tex"
-	"printmaker/types"
+	"printmaker/cmdhelper"
 
 	"github.com/spf13/cobra"
 )
@@ -21,8 +20,7 @@ Cobra is a CLI library for Go that empowers applications.
 This application is a tool to generate the needed files
 to quickly create a Cobra application.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		problems := generateMatrixProblemList(size)
-		tex.GeneratePdf(problems, column)
+		cmdhelper.CmdMatrix(size, column, dim)
 	},
 }
 
@@ -46,37 +44,4 @@ func init() {
 	// Cobra supports local flags which will only run when this command
 	// is called directly, e.g.:
 	// matrixCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
-}
-
-func generateMatrixProblemList(size int) []types.ProblemAnswer {
-	problems := make([]types.ProblemAnswer, size)
-	for i := 0; i < size; i++ {
-		problems[i] = generateMatrixProblem()
-	}
-	return problems
-}
-
-func generateMatrixProblem() types.ProblemAnswer {
-	a := generateMatrix(dim)
-	b := generateMatrix(dim)
-
-	return generateMatrixProductProblemAnswer(a, b)
-}
-
-func generateMatrixProductProblemAnswer(a types.IntMatrix, b types.IntMatrix) types.ProblemAnswer {
-	c := a.Product(b)
-	problem := a.ToTexString() + "\\times\n" + b.ToTexString()
-	answer := c.ToTexString()
-	return types.ProblemAnswer{Problem: problem, Answer: answer}
-}
-
-func generateMatrix(dim int) types.IntMatrix {
-	array := make([][]int, dim)
-	for i := range array {
-		array[i] = make([]int, dim)
-		for j := range array {
-			array[i][j] = randRange(0, 10)
-		}
-	}
-	return types.CreateIntMatrix(array)
 }
