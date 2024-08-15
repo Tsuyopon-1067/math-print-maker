@@ -16,7 +16,7 @@ var matrixCmd = &cobra.Command{
 	Long: `Generate matrix multiplication problems and answers in pdf format.
 For example:
 	Generate 300 2D matrix multiplication problems in 2 columns format.
-	printmaker matrix --size 300 --column 2`,
+	$printmaker matrix --size 300 --column 2`,
 	Run: func(cmd *cobra.Command, args []string) {
 		cmdhelper.CmdMatrix(size, column, dim)
 	},
