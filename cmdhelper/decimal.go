@@ -16,7 +16,6 @@ func CmdDecimal(size int, column int, option int) {
 }
 
 func generateDecimalProblemList(size int, option int) []types.ProblemAnswer {
-	fmt.Printf("option: %d\n", option)
 	problems := make([]types.ProblemAnswer, size)
 	for i := 0; i < size; i++ {
 		problems[i] = generateDecimalProblem(option)
