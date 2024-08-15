@@ -4,7 +4,6 @@ Copyright © 2024 NAME HERE <EMAIL ADDRESS>
 package cmd
 
 import (
-	"fmt"
 	"printmaker/cmdhelper"
 
 	"github.com/spf13/cobra"
@@ -13,13 +12,11 @@ import (
 // decimalCmd represents the decimal command
 var decimalCmd = &cobra.Command{
 	Use:   "decimal",
-	Short: "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
-
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+	Short: "Generate decimal addition and subtraction problems and answers in pdf format.",
+	Long: `Generate decimal addition and subtraction problems and answers in pdf format.
+For example:
+	Generate 300 decimal addition and subtraction problems in 2 columns format.
+	$printmaker decimal --size 300 --column 2`,
 	Run: func(cmd *cobra.Command, args []string) {
 		option := 0
 		if isAddition {
