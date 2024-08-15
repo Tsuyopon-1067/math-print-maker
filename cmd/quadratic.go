@@ -14,7 +14,9 @@ var quadraticCmd = &cobra.Command{
 	Use:   "quadratic",
 	Short: "Generate quadratic equation problems and answers in pdf format",
 	Long: `Generate quadratic equation problems and answers in pdf format.
-	You can specify the number of problems to generate by passing the size flag and columns of generated pdf file.`,
+For example:
+	Generate 300 quadratic equation and subtraction problems in 2 columns format.
+    $printmaker quadratic --size 300 --column 2`,
 	Run: func(cmd *cobra.Command, args []string) {
 		cmdhelper.CmdQuadratic(size, column)
 	},
