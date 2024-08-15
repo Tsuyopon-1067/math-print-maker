@@ -1,7 +1,6 @@
 package cmdhelper
 
 import (
-	"fmt"
 	"printmaker/types"
 	"testing"
 
@@ -30,6 +29,5 @@ func TestGenerateMatrixProblemList(t *testing.T) {
 	}
 
 	actual := generateMatrixProductProblemAnswer(a, b)
-	fmt.Println(actual)
 	assert.Equal(t, expected, actual)
 }
