@@ -32,6 +32,6 @@ func generateModAdditionSubtractionProblemAnswer(a int, b int) types.ProblemAnsw
 	mod := a % b
 	quotient := a / b
 	problem := fmt.Sprint(a) + " \\div " + fmt.Sprint(b)
-	answer := fmt.Sprint(quotient) + " \\cdots " + fmt.Sprint(mod)
+	answer := fmt.Sprint(quotient) + " あまり " + fmt.Sprint(mod)
 	return types.ProblemAnswer{Problem: problem, Answer: answer}
 }

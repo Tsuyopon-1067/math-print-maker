@@ -11,7 +11,7 @@ func TestGenerateModOk(t *testing.T) {
 	a := 43
 	b := 21
 	problem := "43 \\div 21"
-	answer := "2 \\cdots 1"
+	answer := "2 あまり 1"
 	expected := types.ProblemAnswer{Problem: problem, Answer: answer}
 
 	actual := generateModAdditionSubtractionProblemAnswer(a, b)
