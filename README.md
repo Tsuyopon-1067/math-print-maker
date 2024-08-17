@@ -22,6 +22,8 @@ printmaker <problem type> <option>
     - Generate integer addition and subtraction problems and answers in pdf format. You can specify the number of digits.
 - `matrix`
     - Generate matrix multiplication problems and answers in pdf format.
+- `mod`
+    - Generate division problems with a remainder and answers in pdf format.
 - `quadratic`
     - Generate quadratic equation problems and answers in pdf format.
 
@@ -43,6 +45,10 @@ printmaker <problem type> <option>
 
 #### `matrix`
 - `-d <int>`, `--dim <int>`      Dimension flag (default 3)
+
+#### `mod`
+- `-r`, `--left`         Number of left term digit
+- `-l`, `--right`        Number of right term digit
 
 #### `quadratic`
 - none
@@ -81,6 +87,16 @@ printmaker <problem type> <option>
 - Generate 300 2D matrix multiplication problems in 3 columns format.
     ```
     printmaker matrix --dim 2
+    ```
+
+- Generate 120 division problems with a remainderquadratic that the digit of left term is 3 and right term is 1 in 3 columns format.
+    ```
+    printmaker mod -s 120 --left 3 --right 1
+    ```
+
+- Generate 240 division problems with a remainderquadratic that the digit of left term is 5 and right term is 3 in 3 columns format.
+    ```
+    printmaker mod -s 240 -l 5 -r 3
     ```
 
 - Generate 200 quadratic equation problems in 3 columns format.
