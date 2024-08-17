@@ -10,7 +10,7 @@ import (
 func GeneratePdf(problemList []types.ProblemAnswer, column int) {
 	content := platesSource(problemList, column)
 
-	baseFileName := "tmp"
+	baseFileName := "output"
 	tex := baseFileName + ".tex"
 	dvi := baseFileName + ".dvi"
 	aux := baseFileName + ".aux"
