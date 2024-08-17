@@ -18,8 +18,12 @@ printmaker <problem type> <option>
 ## problem type
 - `decimal`
     - Generate decimal addition and subtraction problems and answers in pdf format.
+- `integer`
+    - Generate integer addition and subtraction problems and answers in pdf format. You can specify the number of digits.
 - `matrix`
     - Generate matrix multiplication problems and answers in pdf format.
+- `mod`
+    - Generate division problems with a remainder and answers in pdf format.
 - `quadratic`
     - Generate quadratic equation problems and answers in pdf format.
 
@@ -28,12 +32,23 @@ printmaker <problem type> <option>
 - `-c <int>`, `--column <int>`   Number of columns (default 3)
 - `-s <int>`, `--size <int>`     Number of problems (default 100)
 - `-h`, `--help`         help for quadratic
+
+#### `integer`
+- `-m`, `--minus`        Generate subtraction problems
+- `-p`, `--plus`         Generate addition problems
+- `-r`, `--left`         Number of left term digit
+- `-l`, `--right`        Number of right term digit
+
 #### `decimal`
 - `-m`, `--minus`        Generate subtraction problems
 - `-p`, `--plus`         Generate addition problems
 
 #### `matrix`
 - `-d <int>`, `--dim <int>`      Dimension flag (default 3)
+
+#### `mod`
+- `-r`, `--left`         Number of left term digit
+- `-l`, `--right`        Number of right term digit
 
 #### `quadratic`
 - none
@@ -46,17 +61,42 @@ printmaker <problem type> <option>
 
 - Generate 100 decimal addition problems in 3 columns format.
     ```
-    printmaker decimal plus
+    printmaker decimal --plus
     ```
 
 - Generate 100 decimal subtraction problems in 3 columns format.
     ```
-    printmaker decimal m
+    printmaker decimal -m
+    ```
+
+- Generate 150 integer addition problems that the digit of left term is 2 and right term is 3 in 3 columns format.
+    ```
+    printmaker integer --size 150 --plus --left 2 --right 3
+    ```
+
+- Generate 350 integer subtraction problems that the digit of left term is 3 and right term is 2 in 3 columns format.
+    ```
+    printmaker integer --size 150 --minus -l 3 -r 2
+    ```
+
+- Generate 80 integer addition and subtraction problems that the digit of left term is 4 and right term is 3 in 3 columns format.
+    ```
+    printmaker integer -s 80 -l 4 -r 3
     ```
 
 - Generate 300 2D matrix multiplication problems in 3 columns format.
     ```
     printmaker matrix --dim 2
+    ```
+
+- Generate 120 division problems with a remainderquadratic that the digit of left term is 3 and right term is 1 in 3 columns format.
+    ```
+    printmaker mod -s 120 --left 3 --right 1
+    ```
+
+- Generate 240 division problems with a remainderquadratic that the digit of left term is 5 and right term is 3 in 3 columns format.
+    ```
+    printmaker mod -s 240 -l 5 -r 3
     ```
 
 - Generate 200 quadratic equation problems in 3 columns format.
