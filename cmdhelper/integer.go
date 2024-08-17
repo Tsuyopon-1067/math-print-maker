@@ -28,9 +28,6 @@ func generateIntegerProblem(option int, l int, r int) types.ProblemAnswer {
 	case 1:
 		return generateIntegerAdditionSubtractionProblemAnswer(a, b, 1)
 	case 2:
-		if a < b {
-			a, b = b, a
-		}
 		return generateIntegerAdditionSubtractionProblemAnswer(a, b, 2)
 	default:
 		rand := rand.Intn(2) + 1
@@ -45,6 +42,9 @@ func generateIntegerAdditionSubtractionProblemAnswer(a int, b int, addSub int) t
 		problem = fmt.Sprint(a) + "+" + fmt.Sprint(b)
 		answer = fmt.Sprint(a + b)
 	case 2:
+		if a < b {
+			a, b = b, a
+		}
 		problem = fmt.Sprint(a) + "-" + fmt.Sprint(b)
 		answer = fmt.Sprint(a - b)
 	default:
